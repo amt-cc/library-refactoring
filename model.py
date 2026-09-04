@@ -1,3 +1,24 @@
+class Price:
+
+    def get_charge(self, days_rented: int) -> float:
+        pass
+
+    def get_frequent_renter_points(self, days_rented: int) -> int:
+        pass
+
+
+class RegularPrice(Price):
+    pass
+
+
+class NewReleasePrice(Price):
+    pass
+
+
+class ChildrenPrice(Price):
+    pass
+
+
 class Book:
 
     REGULAR: int = 0
@@ -64,14 +85,11 @@ class Client:
         for rental in self._rentals:
             amount = rental.get_charge()
 
-            # add frequent renter points
             frequent_renter_points += rental.get_frequent_renter_points()
 
-            # show each rental result
             result += f"- {rental.book.title}: {amount}\n"
             total_amount += amount
 
-        # show total result
         result += f"Total: {total_amount}\n"
         result += f"Points: {frequent_renter_points}"
         return result
